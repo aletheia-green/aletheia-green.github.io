@@ -52,6 +52,24 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
         }
+        /* Estilos para el contenedor del logo (si es necesario) */
+        .logo-link {
+            display: flex; /* Asegura que la imagen se centre o alinee bien */
+            align-items: center;
+            height: 100%; /* Ajusta si tu nav tiene una altura definida */
+        }
+
+        /* Estilos para la imagen del logo */
+        .logo-img {
+            height: 90px; /* Prueba con un valor más grande, por ejemplo 70px */
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+        }
 
         .nav-links {
             display: flex;
@@ -604,7 +622,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo">ALETHEIA</div>
+            <a href="#" class="logo-link">
+                <img src="logo-aletheia.png" alt="ALETHEIA Logo - Where Green Becomes Truth" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="#problema">Problema</a></li>
                 <li><a href="#solucion">Solución</a></li>
