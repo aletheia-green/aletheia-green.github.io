@@ -544,24 +544,204 @@
 
         /* Responsive Styles */
         @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo-img {
+                height: 60px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 60px;
+                min-height: auto;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+                gap: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .floating-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
             }
             
             .features-grid, .team-grid, .problem-stats {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .tech-layers {
+                gap: 1.5rem;
+            }
+
+            .tech-layer {
+                padding: 1.5rem;
+            }
+
+            .tech-layer-title {
+                font-size: 1.3rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .problem-icon, .feature-icon {
+                font-size: 2rem;
+            }
+
+            .problem-value {
+                font-size: 2rem;
+            }
+
+            .feature-title {
+                font-size: 1.25rem;
+            }
+
+            .team-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .team-role {
+                font-size: 1.1rem;
             }
             
             .impact-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
-            
-            .hero-text h1 {
+
+            .impact-number {
                 font-size: 2.5rem;
             }
-            
-            .nav-links {
-                display: none;
+
+            .impact-label {
+                font-size: 0.9rem;
+            }
+
+            .impact > div:last-child {
+                padding: 2rem 1.5rem !important;
+                margin-top: 2rem !important;
+            }
+
+            .impact > div:last-child h3 {
+                font-size: 1.5rem !important;
+            }
+
+            .impact > div:last-child > div {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .cta-section {
+                margin: 2rem 1.5rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+            }
+
+            .team-contact {
+                margin-top: 2rem;
+            }
+
+            .contact-label {
+                font-size: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .contact-link {
+                padding: 0.875rem 1.5rem !important;
+                font-size: 1rem !important;
+                word-break: break-all;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-card, .feature-card, .team-card {
+                padding: 1.5rem;
             }
         }
         
