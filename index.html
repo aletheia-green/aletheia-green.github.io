@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALETHEIA - Where Green Becomes Truth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #d1fae5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #064e3b;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #059669;
+            margin-top: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #059669;
+            border: 2px solid #10b981;
+        }
+
+        .btn-secondary:hover {
+            background: #f0fdf4;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #064e3b;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #dc2626;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: #f0fdf4;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            border-top: 4px solid #10b981;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #064e3b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Technology Section */
+        .technology {
+            background: #ffffff;
+        }
+
+        .tech-layers {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-layer {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 6px solid #10b981;
+            transition: all 0.3s;
+        }
+
+        .tech-layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .tech-layer-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #064e3b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .tech-content {
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .tech-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .tech-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tech-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .team-role {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #064e3b;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-count {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        /* Impact Section */
+        .impact {
+            background: #ffffff;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .impact-label {
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #064e3b, #047857);
+            color: white;
+            text-align: center;
+            padding: 5rem 3rem;
+            border-radius: 24px;
+            margin: 4rem 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid, .team-grid, .problem-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* Custom styles for new external links */
+        .inline-link {
+            color: inherit;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: #10b981;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            transition: all 0.2s ease;
+        }
+        .inline-link:hover {
+            color: #059669;
+            background-color: #ecfdf5;
+        }
+		/* --- CSS para la sección de contacto del equipo --- */
+
+	/* Contenedor principal para el correo */
+	.team-contact {
+		text-align: center; /* Centra el contenido */
+		margin-top: 4rem;   /* Añade espacio sobre el texto de contacto */
+	}
+
+	/* Párrafo de introducción antes del correo */
+	.team-contact .contact-label {
+		color: #4b5563;           /* Color de texto sutil */
+		margin-bottom: 1.5rem;    /* Espacio entre el texto y el botón de correo */
+		font-size: 1.1rem;
+	}
+
+	/* Enlace del correo, estilizado como un botón */
+	.team-contact .contact-link {
+		display: inline-block;          /* Permite aplicar padding y margin */
+		background-color: #ffffff;      /* Fondo blanco */
+		color: #059669;                 /* Color de texto verde principal */
+		border: 2px solid #10b981;      /* Borde verde */
+		padding: 1rem 2.5rem;           /* Espaciado interno para dar forma de botón */
+		border-radius: 12px;            /* Bordes redondeados consistentes con otros botones */
+		font-size: 1.1rem;
+		font-weight: 600;
+		text-decoration: none;          /* Quita el subrayado por defecto del enlace */
+		transition: all 0.3s ease;      /* Transición suave para el efecto hover */
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+	}
+
+	/* Efecto al pasar el ratón por encima del enlace */
+	.team-contact .contact-link:hover {
+		background-color: #10b981;      /* Cambia el fondo a verde */
+		color: #ffffff;                 /* Cambia el texto a blanco */
+		transform: translateY(-3px);    /* Eleva ligeramente el botón */
+		box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); /* Sombra más pronunciada */
+	}
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ALETHEIA</div>
+            <ul class="nav-links">
+                <li><a href="#problema">Problema</a></li>
+                <li><a href="#solucion">Solución</a></li>
+                <li><a href="#tecnologia">Tecnología</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Transparencia Energética, <span class="highlight">Confianza Automática</span></h1>
+                <p>Certificamos, registramos y recompensamos el consumo energético sostenible de forma verificable y auditable usando tecnología blockchain.</p>
+                <p class="tagline">🌱 Where Green Becomes Truth</p>
+                <div class="cta-buttons">
+                    <a href="#solucion" class="btn btn-primary">Descubre ALETHEIA</a>
+                    <a href="#equipo" class="btn btn-secondary">Nuestro Equipo</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">42%</div>
+                            <div class="stat-label">Empresas sin pruebas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Verificación real</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4x</div>
+                            <div class="stat-label">ROI primer mes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">0€</div>
+                            <div class="stat-label">Coste para usuarios</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problema" class="problem">
+        <div class="section-header">
+            <h2 class="section-title">El Problema del Greenwashing</h2>
+            <p class="section-subtitle">En 2025, el mayor desafío de la sostenibilidad no es la falta de energía verde. Es la falta de confianza.</p>
+        </div>
+        <div class="problem-stats">
+            <div class="problem-card">
+                <div class="problem-icon">⚠️</div>
+                <div class="problem-value">42%</div>
+                <p>de las empresas europeas que afirman ser "sostenibles" no pueden demostrarlo</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">💰</div>
+                <div class="problem-value">Millones €</div>
+                <p>en ayudas públicas perdidas por falta de trazabilidad y verificación</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">📋</div>
+                <div class="problem-value">Lentas</div>
+                <p>Las auditorías ESG son opacas, costosas y no conectan con datos oficiales</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucion" class="solution">
+        <div class="section-header">
+            <h2 class="section-title">La Solución: ALETHEIA</h2>
+            <p class="section-subtitle">Con una sola factura eléctrica, transformamos promesas en pruebas verificables</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3 class="feature-title">Verificación Oficial</h3>
+                <p class="feature-description">Demostramos públicamente el origen 100% renovable de tu energía mediante certificación automática con datos de la CNMC.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Cumplimiento CSRD</h3>
+                <p class="feature-description">Cumple automáticamente con la Directiva CSRD 2025 y genera reportes ESG auditables en tiempo real.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💶</div>
+                <h3 class="feature-title">Acceso a Subvenciones</h3>
+                <p class="feature-description">Accede a programas <a href="https://cinea.ec.europa.eu/programmes/life_en" target="_blank" rel="noopener noreferrer" class="inline-link">LIFE</a>, <a href="https://next-generation-eu.europa.eu/index_es" target="_blank" rel="noopener noreferrer" class="inline-link">NextGenerationEU</a> y Cambia360 sin papeleo manual gracias a la certificación blockchain.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3 class="feature-title">Identidad Digital</h3>
+                <p class="feature-description">NFT Soulbound como certificado permanente e intransferible con QR verificable para tu negocio.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💚</div>
+                <h3 class="feature-title">Recompensas Reales</h3>
+                <p class="feature-description">Los usuarios reciben GreenPoints respaldados internamente por B3TR tokens por consumir en negocios verificados, canjeables por descuentos o ventajas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Seguridad Total</h3>
+                <p class="feature-description">Validación cruzada CNMC + proveedor, auditorías externas y cumplimiento GDPR. Datos cifrados y protegidos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="technology">
+        <div class="section-header">
+            <h2 class="section-title">Arquitectura Tecnológica</h2>
+            <p class="section-subtitle">Tres capas integradas bajo estándares internacionales para garantizar transparencia total</p>
+        </div>
+        <div class="tech-layers">
+            <div class="tech-layer">
+                <h3 class="tech-layer-title">
+                    <span>⚡ Capa 1: Verificación Oficial</span>
+                    <span class="tech-badge">Energy Web Origin</span>
+                </h3>
+                <div class="tech-content">
+                    <p>Analizamos los datos de tu factura (CUPS, proveedor, fechas, consumo) y los contrastamos automáticamente con el Registro de Garantías de Origen de la CNMC.</p>
+                    <ul>
+                        <li>Emisión de <a href="https://www.irecstandard.org/" target="_blank" rel="noopener noreferrer" class="inline-link">Energy Attribute Certificate (EAC)</a> con firma digital DID</li>
+                        <li>Publicación en <a href="https://www.energyweb.org/" target="_blank" rel="noopener noreferrer" class="inline-link">Energy Web Chain</a> con validación EWT</li>
+                        <li>Prevención de doble certificación y fraude</li>
+                        <li>Validación de propiedad, integridad y autenticidad</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tech-layer">
+                <h3 class="tech-layer-title">
+                    <span>🔗 Capa 2: Identidad y Trazabilidad</span>
+                    <span class="tech-badge"><a href="https://vechain.org/" target="_blank" rel="noopener noreferrer" style="color:white; text-decoration:none;">VeChain Thor</a></span>
+                </h3>
+                <div class="tech-content">
+                    <p>El hash del certificado y sus metadatos se anclan en VeChain Thor dentro de un NFT Soulbound inmutable que se convierte en tu identidad energética permanente.</p>
+                    <ul>
+                        <li>NFT no transferible ni modificable</li>
+                        <li>QR público verificable para mostrar en local o web</li>
+                        <li>Enlace directo a transacción EWT</li>
+                        <li>Datos de CO₂ evitado y proveedor validado</li>
+                        <li>Hash de factura original en <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" class="inline-link">IPFS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tech-layer">
+                <h3 class="tech-layer-title">
+                    <span>💰 Capa 3: Incentivos e Impacto</span>
+                    <span class="tech-badge"><a href="https://vebetterdao.org/" target="_blank" rel="noopener noreferrer" style="color:white; text-decoration:none;">B3TR Token</a></span>
+                </h3>
+                <div class="tech-content">
+                    <p>Cada acción verificada activa un sistema de recompensas sostenibles dentro del ecosistema <a href="https://vebetterdao.org/" target="_blank" rel="noopener noreferrer" class="inline-link">VeBetter DAO</a>.</p>
+                    <ul>
+                        <li>Empresas: reputación ESG + acceso a subvenciones LIFE/NextGenerationEU</li>
+                        <li>Usuarios: B3TR tokens por consumir en negocios certificados</li>
+                        <li>Tokens canjeables por descuentos, donaciones o participación en votaciones DAO</li>
+                        <li>Modelo impact-to-earn, no especulativo</li>
+                        <li>ALETHEIA reinvierte comisiones en auditorías y expansión</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+		<section id="equipo" class="team">
+    <div class="section-header">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <p class="section-subtitle">Un equipo multidisciplinar de 6 profesionales comprometidos con la transparencia energética.</p>
+    </div>
+    <div class="team-grid">
+		<div class="team-card">
+    <div class="team-icon">🔗</div>
+    <h3 class="team-role">CARLOS MARRÓN</h3>
+    <p class="team-count">Blockchain</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Arquitectura de DLTs, smart contracts y tokenomics.</p>
+</div>
+
+<div class="team-card">
+    <div class="team-icon">⚙️</div>
+    <h3 class="team-role">GUILLERMO GALVÁN</h3>
+    <p class="team-count">Ingeniería Industrial</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Sistemas energéticos y optimización de procesos sostenibles.</p>
+</div>
+
+<div class="team-card">
+    <div class="team-icon">📈</div>
+    <h3 class="team-role">ÁLVARO TORRES</h3>
+    <p class="team-count">Business Development</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Estrategia de mercado, alianzas y escalabilidad del modelo.</p>
+</div>
+
+<div class="team-card">
+    <div class="team-icon">🔐</div>
+    <h3 class="team-role">DANIEL MARTÍN</h3>
+    <p class="team-count">Ciberseguridad</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Aplicaciones seguras y protección de datos.</p>
+</div>
+
+<div class="team-card">
+    <div class="team-icon">🔐</div>
+    <h3 class="team-role">HÉCTOR JULIÁN</h3>
+    <p class="team-count">Ciberseguridad</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Criptografía y verificación de identidad digital.</p>
+</div>
+
+
+<div class="team-card">
+    <div class="team-icon">🔐</div>
+    <h3 class="team-role">ÁLVARO MOTA</h3>
+    <p class="team-count">Ciberseguridad</p>
+    <p style="color: #6b7280; margin-top: 1rem;">Seguridad de redes y análisis de amenazas.</p>
+</div>
+
+        
+    </div>
+    
+    <div class="team-contact">
+        <p class="contact-label">¿Interesado en unirte o colaborar? Contáctanos:</p>
+        <a href="mailto:aletheia-green@protonmail.com" class="contact-link">aletheia-green@protonmail.com</a>
+    </div>
+</section>
+
+    <section id="impacto" class="impact">
+        <div class="section-header">
+            <h2 class="section-title">Impacto Medible</h2>
+            <p class="section-subtitle">Resultados reales para empresas, usuarios y el planeta</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-number">4x</div>
+                <p class="impact-label">ROI en primer mes</p>
+            </div>
+            <div class="impact-card">
+                <div class="impact-number">700t</div>
+                <p class="impact-label">CO₂ evitadas/año</p>
+            </div>
+            <div class="impact-card">
+                <div class="impact-number">10K</div>
+                <p class="impact-label">Usuarios recompensados</p>
+            </div>
+            <div class="impact-card">
+                <div class="impact-number">100%</div>
+                <p class="impact-label">Verificación auditable</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-radius: 16px;">
+            <h3 style="font-size: 2rem; color: #064e3b; margin-bottom: 2rem; text-align: center;">Para una empresa con 10 locales</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #059669;">+500€/local</div>
+                    <div style="color: #6b7280;">Incremento de ventas</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #059669;">+55€/local</div>
+                    <div style="color: #6b7280;">Ahorro en auditorías ESG</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #059669;">+125€/local</div>
+                    <div style="color: #6b7280;">Bonificaciones LIFE/Cambia360</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>¿Listo para demostrar tu sostenibilidad?</h2>
+        <p>Únete a la revolución de la transparencia energética verificable</p>
+        <a href="mailto:aletheia-green@protonmail.com?subject=Solicitud%20de%20Demo%20ALETHEIA" class="btn btn-primary" style="background: white; color: #047857;">Solicita una Demo</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">ALETHEIA</div>
+            <p style="margin: 1rem 0;">Where Green Becomes Truth 🌱</p>
+            <p style="color: #9ca3af; margin-top: 2rem;">© 2025 ALETHEIA - ALETHEIA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
